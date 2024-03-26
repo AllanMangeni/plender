@@ -1,149 +1,60 @@
 
 import Head from 'next/head';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import GradientBG from '../components/GradientBG.js';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import heroMinaLogo from '../../public/assets/hero-mina-logo.svg';
-import arrowRightSmall from '../../public/assets/arrow-right-small.svg';
 
 export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const { Mina, PublicKey } = await import('o1js');
-      const { Add } = await import('../../../contracts/build/src/');
-
-      // Update this to use the address (public key) for your zkApp account.
-      // To try it out, you can try this address for an example "Add" smart contract that we've deployed to
-      // Berkeley Testnet B62qkwohsqTBPsvhYE8cPZSpzJMgoKn4i1LQRuBAtVXWpaT4dgH6WoA.
-      const zkAppAddress = '';
-      // This should be removed once the zkAppAddress is updated.
-      if (!zkAppAddress) {
-        console.error(
-          'The following error is caused because the zkAppAddress has an empty string as the public key. Update the zkAppAddress with the public key for your zkApp account, or try this address for an example "Add" smart contract that we deployed to Berkeley Testnet: B62qkwohsqTBPsvhYE8cPZSpzJMgoKn4i1LQRuBAtVXWpaT4dgH6WoA'
-        );
-      }
-      //const zkApp = new Add(PublicKey.fromBase58(zkAppAddress))
-    })();
-  }, []);
-
   return (
-    <>
+    <div className={styles.container}>
       <Head>
-        <title>Mina zkApp UI</title>
-        <meta name="description" content="built with o1js" />
-        <link rel="icon" href="/assets/favicon.ico" />
+        <title>P2P Lending Platform with Mina Protocol</title>
+        <meta name="description" content="Secure and private P2P lending powered by Mina Protocol" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GradientBG>
-        <main className={styles.main}>
-          <div className={styles.center}>
-            <a
-              href="https://minaprotocol.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                className={styles.logo}
-                src={heroMinaLogo}
-                alt="Mina Logo"
-                width="191"
-                height="174"
-                priority
-              />
-            </a>
-            <p className={styles.tagline}>
-              built with
-              <code className={styles.code}> o1js</code>
-            </p>
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Welcome to Our Secure P2P Lending Platform
+        </h1>
+
+        <p className={styles.description}>
+          Leveraging the Mina Protocol for Maximum Privacy and Security
+        </p>
+
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <h2>Creditworthiness</h2>
+            <p>Prove your financial reliability securely without exposing your personal data.</p>
+            <Link href="/apply-loan">
+              <button className={styles.button}>Apply for a Loan</button>
+            </Link>
           </div>
-          <p className={styles.start}>
-            Get started by editing
-            <code className={styles.code}> src/pages/index.js</code> or <code className={styles.code}> src/pages/index.tsx</code>
-          </p>
-          <div className={styles.grid}>
-            <a
-              href="https://docs.minaprotocol.com/zkapps"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>DOCS</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Explore zkApps, how to build one, and in-depth references</p>
-            </a>
-            <a
-              href="https://docs.minaprotocol.com/zkapps/tutorials/hello-world"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>TUTORIALS</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Learn with step-by-step o1js tutorials</p>
-            </a>
-            <a
-              href="https://discord.gg/minaprotocol"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>QUESTIONS</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Ask questions on our Discord server</p>
-            </a>
-            <a
-              href="https://docs.minaprotocol.com/zkapps/how-to-deploy-a-zkapp"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                <span>DEPLOY</span>
-                <div>
-                  <Image
-                    src={arrowRightSmall}
-                    alt="Mina Logo"
-                    width={16}
-                    height={16}
-                    priority
-                  />
-                </div>
-              </h2>
-              <p>Deploy a zkApp to Berkeley Testnet</p>
-            </a>
+
+          <div className={styles.card}>
+            <h2>Privacy</h2>
+            <p>Ensure your transactions and interactions remain encrypted and private.</p>
+            <Link href="/privacy-policy">
+              <button className={styles.button}>View Privacy Policy</button>
+            </Link>
           </div>
-        </main>
-      </GradientBG>
-    </>
+
+          <div className={styles.card}>
+            <h2>Asset Transfer</h2>
+            <p>Securely transfer assets as collateral or for repayments without revealing details.</p>
+            <Link href="/transfer-assets">
+              <button className={styles.button}>Manage Assets</button>
+            </Link>
+          </div>
+
+          <div className={styles.card}>
+            <h2>Dashboard</h2>
+            <p>Manage your loans, repayments, and view your financial metrics in one place.</p>
+            <Link href="/dashboard">
+              <button className={styles.button}>Go to Dashboard</button>
+            </Link>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
